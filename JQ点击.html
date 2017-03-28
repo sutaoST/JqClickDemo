@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击下拉列表</title>
+    <style>
+        *{
+            list-style: none;
+            margin:0;
+            padding:0;
+            text-decoration:none;
+        }
+        .box{
+            width: 1000px;
+            height: 650px;
+            margin:0 auto;
+            border:1px solid red;
+        }
+        .title_head{
+            width: 600px;
+            height: 50px;
+            line-height: 50px;
+            border:1px solid #ccc;
+            margin:20px auto;
+        }
+         .title_head .number{
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background: #e7f0f7;
+        }
+        .imgs{
+           width: 50px;
+           height: 50px;
+           display: block;
+           float: right;
+           background: url(open.png) no-repeat 55% center;
+        }
+        .list{
+            width: 600px;
+            height:120px;
+            margin:0 auto;
+            display: none;
+        }
+        .list li{
+            width: 600px;
+            height: 30px;
+            line-height: 30px;
+            border:1px solid #ddd;
+            margin:5px auto;
+            color: red;
+        }
+        .active{
+            color: #fff !important;
+            background-color: #53B5C0 !important;
+        }
+        .active2{
+            background: url(close.png) no-repeat 55% center !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="title">
+            <h3 class="title_head"><a href=""><span class='number'>1</span>第一章节<span class='imgs'></span></a></h3>
+                <ul class="list">
+                    <li>第一部分</li>
+                    <li>第二部分</li>
+                    <li>第三部分</li>
+                </ul>
+        </div>
+        <div class="title">    
+            <h3 class="title_head"><a href=""><span class='number'>2</span>第二章节<span class='imgs'></span></a></h3>
+                <ul class="list">
+                    <li>第一部分</li>
+                    <li>第二部分</li>
+                    <li>第三部分</li>
+                </ul>
+         </div>
+         <div class="title">  
+            <h3 class="title_head"><a href=""><span class='number'>3</span>第三章节<span class='imgs'></span></a> </h3>
+                <ul class="list">
+                    <li>第一部分</li>
+                    <li>第二部分</li>
+                    <li>第三部分</li>
+                </ul>
+        </div>
+        </div>
+   
+    <script src='jquery.min.js'></script>
+    <script>
+    $(document).ready(function() {
+        $('.title>.title_head').click(function(){
+               $(this).toggleClass("active").next('.list').stop().slideToggle().end().find(".imgs").toggleClass("active2"); 
+               // $(this).parent('.title').siblings('.title').children('.list').slideDown();          
+            $(this).parent('.title').siblings('.title').children('.list').slideUp();
+            $(this).parent('.title').siblings('.title').children('.title_head').removeClass("active"); 
+            $(this).parent(".title").siblings('.title').find('.title_head .imgs').removeClass('active2');
+        })
+    });
+    </script>
+</body>
+</html>
